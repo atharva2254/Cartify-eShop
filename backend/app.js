@@ -5,7 +5,6 @@ const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const cookieParser = require("cookie-parser");
-const path = require("path");
 require("dotenv").config();
 
 app.use(
@@ -14,13 +13,6 @@ app.use(
     credentials: true,
   })
 );
-// Serve frontend
-app.use(express.static(path.join(__dirname, "../app/dist"))); // CRA
-// or "../app/dist" if Vite
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../app/dist", "index.html"));
-});
 
 app.use(cookieParser());
 app.use(express.json());

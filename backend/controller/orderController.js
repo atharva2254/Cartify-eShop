@@ -55,6 +55,7 @@ const createOrder = async (req, res) => {
 
     await User.findByIdAndUpdate(savedOrder.user, {
       $push: { orders: savedOrder._id },
+       $set: { cart: [] },
     });
 
     return res.json({
